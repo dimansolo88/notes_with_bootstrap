@@ -10,7 +10,7 @@ export const FireBaseState = ({children}) => {
     const initialiseState = {
         notes: [],
         loading: false,
-    }
+    };
 
     const [state, dispatch] = useReducer(fireBaseReducer, initialiseState);
 
@@ -34,9 +34,9 @@ export const FireBaseState = ({children}) => {
     const addNote = async title => {
         const note = {
             title, date: new Date().toJSON()
-        };
+        }
         try {
-            const res = axios.post(`${url}/notes.json`, note)
+            const res = await axios.post(`${url}/notes.json`, note);
             // console.log(res)
             const payload = {
                 ...note,
@@ -52,6 +52,8 @@ export const FireBaseState = ({children}) => {
 
 
     };
+
+
 
         const removeNote = async  id => {
             await axios.delete(`${url}/notes/${id}.json`)
