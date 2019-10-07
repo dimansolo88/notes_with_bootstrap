@@ -6,7 +6,7 @@ import Loader from "./Loader";
 
 
 const Home = () => {
-    const {loading, notes, fetchNotes} = useContext(FireBaseContext);
+    const {loading, notes, fetchNotes, removeNote} = useContext(FireBaseContext);
     useEffect(() => {
         fetchNotes()
     }, []);
@@ -15,7 +15,7 @@ const Home = () => {
     return <div>
         <Form/>
         {loading
-            ? <Loader/> : <Notes notes={notes}/>}
+            ? <Loader/> : <Notes notes={notes} onRemove={removeNote}/>}
 
     </div>
 };

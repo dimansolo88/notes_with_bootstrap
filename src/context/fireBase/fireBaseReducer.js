@@ -10,7 +10,7 @@ const handlers = {
         ...state, notes:[...state.notes,payload]
     }),
     [FETCH_NOTE]: (state,{payload} ) => ({
-        ...state,notes:payload
+        ...state,notes:payload, loading: false
     }),
     [REMOVE_NOTE]: (state,{payload}) => ({
         ...state,

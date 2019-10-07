@@ -11,8 +11,12 @@ const Form = () => {
     const submitHandler = event => {
         event.preventDefault()
         if(value.trim()) {
-            fireBase.addNote(value.trim())
-            alert.show("note was creating ", 'success')
+            fireBase.addNote(value.trim()).then( () => {
+                alert.show("note was creating ", 'success')
+
+            }).catch(() => {
+                alert.show(" note was not created ", 'danger')
+            })
             setValue('')
         }
         else {
